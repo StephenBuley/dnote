@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Utility to quickly rename folders and files based on conventions.",
   "main": "index.js",
+  "bin": {
+    "dnote": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
