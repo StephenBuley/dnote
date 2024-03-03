@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/StephenBuley/dnote/issues"
   },
-  "homepage": "https://github.com/StephenBuley/dnote#readme"
+  "homepage": "https://github.com/StephenBuley/dnote#readme",
+  "dependencies": {
+    "commander": "^12.0.0"
+  }
 }
