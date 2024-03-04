@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander'
+import path from 'node:path'
 
 program
   .option('-c, --camel-case', 'change words in a filename to camelCase')
@@ -13,3 +14,4 @@ const options = program.opts()
 
 console.log('hello from node')
 console.dir(options)
+console.log(path.relative('.', program.args[0]))

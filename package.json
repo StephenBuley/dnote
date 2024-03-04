@@ -2,9 +2,9 @@
   "name": "dnote",
   "version": "1.0.0",
   "description": "Utility to quickly rename folders and files based on conventions.",
-  "main": "index.js",
+  "main": "/dist/index.js",
   "bin": {
-    "dnote": "index.js"
+    "dnote": "./dist/index.js"
   },
   "type": "module",
   "scripts": {
