@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { program } from 'commander'
+import { OptionValues, program } from 'commander'
 import path from 'node:path'
 
 program
@@ -10,7 +10,8 @@ program
 
 program.parse()
 
-const options = program.opts()
+const options: OptionValues = program.opts()
+const filename: string = program.args[0]
 
 console.log('hello from node')
 console.dir(options)
