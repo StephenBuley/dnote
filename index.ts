@@ -31,7 +31,20 @@ if (fs.existsSync(filename)) {
 }
 
 function transformFileWords(name: string, options: OptionValues): string {
-  return 'changedName'
+  const wordsArray = separateIntoWords(name)
+  return wordsArray.join(getSeparator(options))
+}
+
+function getSeparator(options: OptionValues): string {
+  if (options.snakeCase) return '_'
+  if (options.kebabCase) return '-'
+  if (options.spaces) return ' '
+  return '' // figure camelCase out later
+}
+
+function separateIntoWords(name: string): string[] {
+  const words = name.split(/[ \-_]/)
+  return words
 }
 
 // we need to
