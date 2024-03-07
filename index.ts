@@ -16,9 +16,14 @@ const options: OptionValues = program.opts()
 const filename: string = program.args[0]
 
 if (fs.existsSync(filename)) {
-  const ext = path.extname(filename)
-  const name = path.parse(filename).name
-  const newFilename = transformFileWords(name, options) + ext
+  const oldPathObj = path.parse(filename)
+  const name = oldPathObj.name
+  const newFilename = path.format({
+    ...oldPathObj,
+    base: '',
+    name: transformFileWords(name, options),
+  })
+  console.log(newFilename)
   if (fs.existsSync(newFilename)) {
     // ask if we want to overwrite this file
     console.log('Asking if we want to overwrite the file that already exists')
