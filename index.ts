@@ -47,15 +47,66 @@ function separateIntoWords(name: string): string[] {
   return words
 }
 
-// we need to
-// 2. see if we can parse the filename into words
-//    a. this could be based on spaces "Quick Notes.md"
-//    b. this could be based on kebab-case "Quick-Notes.md"
-//    c. this could be based on camelCase "quickNotes.md"
-//    c.5. this could be based on CamelCase "QuickNotes.md"
-//    d. this could be based on snake-case "quick_notes.md"
-//    e. this could be based on a combination "these-are_my quickNotes.md"
-// 3. once we've parsed into words, join in the correct fashion and add the extension back on
-// 4. check to make sure there isn't already a file at that path name
-// 5. if there is, ask the user if we want to overwrite the file
-// 6 if there isn't, just change the name of the file
+function isCapitalLetter(char: string): boolean {
+  return (
+    char !== undefined && char.charCodeAt(0) > 64 && char.charCodeAt(0) < 91
+  )
+}
+
+function startsNewWord(
+  char: string,
+  prevChar: string | undefined,
+  nextChar: string | undefined,
+  isLast: boolean,
+): boolean {
+  if (isLast) return false
+  if (isCapitalLetter(char)) {
+    // this line checks for whether or not the capital character is part of a all caps word
+    if (
+      (prevChar && !isCapitalLetter(prevChar)) ||
+      (nextChar && !isCapitalLetter(nextChar))
+    ) {
+      return true
+    }
+  }
+  return false
+}
+
+/**
+ *
+ * @param {string} word A camelCase word that needs to be split,
+ * @returns {string[]} an array of the split words
+ * @example
+ * const word = "myCamelCaseWord"
+ * const readMe = "READMe"
+ * const one = "ONEWORD"
+ *
+ * splitCamelCaseWord(word) // returns ["my", "Camel", "Case", "Word"]
+ * splitCamelCaseWord(readMe) // returns ["READ", "Me"]
+ * splitCamelCaseWord(one) // returns ["ONEWORD"]
+ */
+function splitCamelCaseWord(word: string): string[] {
+  const words: string[] = []
+  // this is to help keep track of the previous characters
+  let currentWord = '' + word[0] // just the first letter
+  // look through the word
+  for (let i = 1; i < word.length; i++) {
+    const char = word[i]
+    // if we hit a capital letter
+    const prevChar = currentWord[currentWord.length - 1]
+    const nextChar = word[i + 1]
+    const isLast = i === word.length - 1
+    if (startsNewWord(char, prevChar, nextChar, isLast)) {
+      // add the currentWord to the returned words array
+      words.push(currentWord)
+      // reset currentWord to nothing
+      currentWord = ''
+    }
+    // always add the current character to the word
+    currentWord += char
+  }
+  // when we get to the end, add the current word
+  words.push(currentWord)
+
+  return words
+}
