@@ -23,13 +23,15 @@ if (fs.existsSync(filename)) {
     base: '',
     name: transformFileWords(name, options),
   })
-  console.log(newFilename)
+
   if (fs.existsSync(newFilename)) {
-    // ask if we want to overwrite this file
-    console.log('Asking if we want to overwrite the file that already exists')
+    console.error(
+      `'${filename}' not renamed: '${newFilename}' already exists.\nIf using the -c option, use 'mv ${filename} ${newFilename}' instead`,
+    )
   } else {
     // change the name
     console.log('changing the name of ' + filename + ' to ' + newFilename)
+    fs.renameSync(filename, newFilename)
   }
 } else {
   console.error('Could not find path to the specified filename, exit process')
