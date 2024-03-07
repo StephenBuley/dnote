@@ -32,7 +32,19 @@ if (fs.existsSync(filename)) {
 
 function transformFileWords(name: string, options: OptionValues): string {
   const wordsArray = separateIntoWords(name)
-  return wordsArray.join(getSeparator(options))
+  let finalWordsArray: string[] = []
+  for (const word of wordsArray) {
+    const words = splitCamelCaseWord(word)
+    finalWordsArray.push(...words)
+  }
+  if (options.camelCase) {
+    // loop over the words array and make them all camel case equivalent, excluding the first
+    finalWordsArray = finalWordsArray.map((word, i) => {
+      if (i === 0) return word[0].toLowerCase() + word.slice(1)
+      return word[0].toUpperCase() + word.slice(1)
+    })
+  }
+  return finalWordsArray.join(getSeparator(options))
 }
 
 function getSeparator(options: OptionValues): string {
