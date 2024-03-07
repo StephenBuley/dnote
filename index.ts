@@ -26,7 +26,7 @@ if (fs.existsSync(filename)) {
 
   if (fs.existsSync(newFilename)) {
     console.error(
-      `'${filename}' not renamed: '${newFilename}' already exists.\nIf using the -c option, use 'mv ${filename} ${newFilename}' instead`,
+      `'${filename}' not renamed: '${newFilename}' already exists.\nIf using the -c option, you may want to use 'mv ${filename} ${newFilename}' instead`,
     )
   } else {
     // change the name
