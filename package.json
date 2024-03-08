@@ -1,6 +1,6 @@
 {
   "name": "renom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utility to quickly rename folders and files based on conventions.",
   "main": "/dist/index.js",
   "bin": {
