@@ -1,10 +1,10 @@
 {
-  "name": "dnote",
+  "name": "renom",
   "version": "1.0.0",
   "description": "Utility to quickly rename folders and files based on conventions.",
   "main": "/dist/index.js",
   "bin": {
-    "dnote": "./dist/index.js"
+    "renom": "./dist/index.js"
   },
   "type": "module",
   "scripts": {
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StephenBuley/dnote.git"
+    "url": "git+https://github.com/StephenBuley/renom.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/StephenBuley/dnote/issues"
+    "url": "https://github.com/StephenBuley/renom/issues"
   },
-  "homepage": "https://github.com/StephenBuley/dnote#readme",
+  "homepage": "https://github.com/StephenBuley/renom#readme",
   "dependencies": {
     "commander": "^12.0.0"
   },

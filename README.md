@@ -1,27 +1,68 @@
-# dnote
+# renom
 
 Utility to quickly rename folders and files based on conventions.
 
 ## Installation
 
-Step 1: Clone this repository wherever you want on your computer.
-
-```bash
-$ git clone https://github.com/StephenBuley/dnote
-```
-
+Step 1: Clone this repository wherever you want on your computer.<br>
 Step 2: install globally to be able to use anywhere
 
 ```bash
-# from /place/you/installed/dnote
+$ git clone https://github.com/StephenBuley/renom
+$ cd renom
 $ npm install -g .
 ```
 
 ## Usage
 
-Currently all that happens is a console log letting you know it is working.
+```bash
+$ renom 'my file_name.txt' # myfilename.txt
+$ renom -c 'My File Name.txt' # myFileName.txt
+$ renom -k 'My File Name.txt' # My-File-Name.txt
+$ renom -s 'My File Name.txt' # My_File_Name.txt
+$ renom -w 'My_File_Name.txt' # My File Name.txt
+$ renom -h # prints help screen
+```
+
+### Options
+
+Use without an option to smash all of the words together, or denote separate words using one of the following options. <br>
+Multiple options are not recommended and may have unexpected results.
+
+#### -c, --camel-case
+
+Changes the file name to camelCase, lowercase first letter, and every subsequent word has a capitalized first letter.<br>
+Conflicts with other file names that are all one word:
 
 ```bash
-$ dnote
-hello from node
+$ renom -c my-file-name # myFileName
+$ renom -c MyFileName # cannot rename MyFileName to myFileName, use mv MyFileName myFileName instead
 ```
+
+#### -k, --kebab-case
+
+Changes the file name to kebab-case, putting a dash between each word.
+
+```bash
+$ renom -k myFileName # my-File-Name
+```
+
+#### -s, --snake-case
+
+Changes the file name to snake-case, putting an underscore between each word.
+
+```bash
+$ renom -s myFileName # my_File_Name
+```
+
+#### -w, --spaces
+
+Changes the file name to whitespace separated, putting a space between each word.
+
+```bash
+$ renom -w myFileName # 'my File Name'
+```
+
+#### -h, --help
+
+Prints these options in a commander.js generated help screen.
