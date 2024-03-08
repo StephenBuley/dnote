@@ -1,16 +1,13 @@
 # renom
 
-Utility to quickly rename folders and files based on conventions.
+Utility CLI tool to quickly rename folders and files based on conventions.
 
 ## Installation
 
-Step 1: Clone this repository wherever you want on your computer.<br>
-Step 2: install globally to be able to use anywhere
+Install the CLI package globally on your system with npm.
 
 ```bash
-$ git clone https://github.com/StephenBuley/renom
-$ cd renom
-$ npm install -g .
+$ npm install -g renom
 ```
 
 ## Usage
